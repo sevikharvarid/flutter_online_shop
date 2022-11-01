@@ -1,6 +1,4 @@
 import 'package:common/utils/state/view_data_state.dart';
-import 'package:common/utils/state/view_data_state.dart';
-import 'package:dependencies/drift/drift.dart';
 import 'package:onboarding/presentation/bloc/splash_bloc/splash_state.dart';
 import 'package:dependencies/bloc/bloc.dart';
 
