@@ -1,15 +1,17 @@
-import 'package:common/utils/navigation/router/app_routes.dart';
+import 'package:auth/presentation/ui/sign_in_screen.dart';
+import 'package:auth/presentation/ui/sign_up_screen.dart';
+import 'package:common/utils/navigation/navigation_helper.dart';
 import 'package:dependencies/bloc/bloc.dart';
 import 'package:dependencies/firebase/firebase.dart';
-import 'package:dependencies/flutter_screenutil/flutter_screenutil.dart';
+import 'package:dependencies/get_it/get_it.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_online_shop/injections/injections.dart';
-import 'package:onboarding/presentation/ui/splash_screen.dart';
-import 'package:onboarding/presentation/ui/on_boarding_screen.dart';
-import 'package:common/utils/navigation/navigation_helper.dart';
-import 'package:onboarding/presentation/bloc/splash_bloc/splash_cubit.dart';
+import 'package:dependencies/flutter_screenutil/flutter_screenutil.dart';
 import 'package:onboarding/presentation/bloc/onboarding_bloc/onboarding_cubit.dart';
-import 'package:auth/presentation/ui/sign_in_screen.dart';
+import 'package:onboarding/presentation/bloc/splash_bloc/splash_cubit.dart';
+import 'package:onboarding/presentation/ui/on_boarding_screen.dart';
+import 'package:onboarding/presentation/ui/splash_screen.dart';
+import 'package:common/utils/navigation/router/app_routes.dart';
+import 'injections/injections.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,7 +21,7 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({Key? key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,12 +29,18 @@ class MyApp extends StatelessWidget {
       designSize: const Size(360, 690),
       builder: (_, __) => MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: "Flutter E-Commerce",
+        title: 'Flutter Online Shop',
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: BlocProvider(
-          create: (_) => SplashCubit()..initialData(),
+        home: MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              create: (_) => SplashCubit(
+                getOnBoardingStatusUseCase: sl(),
+              )..initSplash(),
+            ),
+          ],
           child: SplashScreen(),
         ),
         navigatorKey: NavigationHelperImpl.navigatorKey,
@@ -45,13 +53,19 @@ class MyApp extends StatelessWidget {
             case AppRoutes.onboarding:
               return MaterialPageRoute(
                 builder: (_) => BlocProvider(
-                  create: (_) => OnBoardingCubit(),
+                  create: (_) => OnBoardingCubit(
+                    cacheOnBoardingUseCase: sl(),
+                  ),
                   child: OnBoardingScreen(),
                 ),
               );
             case AppRoutes.signIn:
               return MaterialPageRoute(
                 builder: (_) => SignInScreen(),
+              );
+            case AppRoutes.signUp:
+              return MaterialPageRoute(
+                builder: (_) => SignUpScreen(),
               );
             default:
               return MaterialPageRoute(

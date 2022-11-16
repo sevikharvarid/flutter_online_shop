@@ -1,28 +1,31 @@
+import 'package:common/utils/constants/app_constants.dart';
 import 'package:common/utils/error/exception.dart';
 import 'package:dependencies/shared_preferences/shared_preferences.dart';
-import 'package:common/utils/constants/app_constants.dart';
 
-abstract class AuthenticationLocalDataSource {
-  const AuthenticationLocalDataSource();
+abstract class AuthenticationLocalDataSources {
+  const AuthenticationLocalDataSources();
 
   Future<bool> cacheOnBoarding();
-  Future<bool> getCacheOnBoardingStatus();
+
+  Future<bool> getOnBoardingStatus();
 }
 
-class AuthenticationLocalDataSourceImpl
-    implements AuthenticationLocalDataSource {
+class AuthenticationLocalDataSourcesImpl
+    implements AuthenticationLocalDataSources {
   final SharedPreferences sharedPreferences;
 
-  const AuthenticationLocalDataSourceImpl({
+  const AuthenticationLocalDataSourcesImpl({
     required this.sharedPreferences,
   });
 
   @override
   Future<bool> cacheOnBoarding() async => await sharedPreferences.setBool(
-      AppConstants.cachedKey.onBoardingKey, true);
+        AppConstants.cachedKey.onBoardingKey,
+        true,
+      );
 
   @override
-  Future<bool> getCacheOnBoardingStatus() async {
+  Future<bool> getOnBoardingStatus() async {
     try {
       return sharedPreferences.getBool(AppConstants.cachedKey.onBoardingKey) ??
           false;

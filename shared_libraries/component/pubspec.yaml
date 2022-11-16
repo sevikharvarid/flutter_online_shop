@@ -15,9 +15,6 @@ dependencies:
   dependencies:
     path: ../dependencies
 
-  product:
-    path: ../../domains/product
-
   common:
     path: ../common
 

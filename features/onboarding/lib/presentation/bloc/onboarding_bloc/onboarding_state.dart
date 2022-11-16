@@ -1,5 +1,5 @@
-import 'package:dependencies/equatable/equatable.dart';
 import 'package:common/utils/state/view_data_state.dart';
+import 'package:dependencies/equatable/equatable.dart';
 
 class OnBoardingState extends Equatable {
   final ViewData<bool> onBoardingState;
@@ -8,9 +8,12 @@ class OnBoardingState extends Equatable {
     required this.onBoardingState,
   });
 
-  OnBoardingState copyWith({ViewData<bool>? onBoardingState}) {
+  OnBoardingState copyWith({
+    ViewData<bool>? onBoardingState,
+  }) {
     return OnBoardingState(
-        onBoardingState: onBoardingState ?? this.onBoardingState);
+      onBoardingState: onBoardingState ?? this.onBoardingState,
+    );
   }
 
   @override

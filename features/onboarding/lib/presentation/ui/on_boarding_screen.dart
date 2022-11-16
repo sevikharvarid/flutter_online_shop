@@ -1,18 +1,18 @@
 import 'package:common/utils/navigation/router/auth_router.dart';
+import 'package:common/utils/state/view_data_state.dart';
 import 'package:dependencies/bloc/bloc.dart';
+import 'package:dependencies/get_it/get_it.dart';
 import 'package:dependencies/introduction_screen/introduction_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:dependencies/flutter_screenutil/flutter_screenutil.dart';
 import 'package:onboarding/presentation/bloc/onboarding_bloc/onboarding_cubit.dart';
 import 'package:onboarding/presentation/bloc/onboarding_bloc/onboarding_state.dart';
 import 'package:resources/assets.gen.dart';
 import 'package:resources/colors.gen.dart';
-import 'package:dependencies/flutter_screenutil/flutter_screenutil.dart';
-import 'package:common/utils/state/view_data_state.dart';
-import 'package:dependencies/get_it/get_it.dart';
 
 class OnBoardingScreen extends StatelessWidget {
   OnBoardingScreen({Key? key}) : super(key: key);
-  final AuthRouter authRouter = sl();
+  final AuthRouter _authRouter = sl();
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class OnBoardingScreen extends StatelessWidget {
         listener: (context, state) {
           final status = state.onBoardingState.status;
           if (status.isHasData) {
-            authRouter.navigateToSignIn();
+            _authRouter.navigateToSignIn();
           }
         },
         child: IntroductionScreen(
@@ -33,7 +33,7 @@ class OnBoardingScreen extends StatelessWidget {
                 height: 205.h,
               ),
               title: "Jelajahi",
-              body: "Cari, temukan dan beli produk favoritmu ",
+              body: "Cari, temukan, dan beli produk favorit mu ",
               decoration: PageDecoration(
                 imageFlex: 2,
                 titlePadding: const EdgeInsets.only(bottom: 10.0, top: 64.0),
@@ -80,7 +80,7 @@ class OnBoardingScreen extends StatelessWidget {
               ),
               title: "Pengalaman Berbelanja",
               body:
-                  "Nikmati kenyamanan berbelanja saat menjelajahi toko favoritmu",
+                  "Nikmati kenyaman berbelanja saat menjelajahi toko favoritmu",
               decoration: PageDecoration(
                 imageFlex: 2,
                 titlePadding: const EdgeInsets.only(bottom: 10.0, top: 64.0),
@@ -96,7 +96,7 @@ class OnBoardingScreen extends StatelessWidget {
                   fontWeight: FontWeight.w400,
                 ),
               ),
-            )
+            ),
           ],
           onDone: () => context.read<OnBoardingCubit>().saveOnBoardingStatus(),
           showBackButton: false,
@@ -108,9 +108,7 @@ class OnBoardingScreen extends StatelessWidget {
             activeColor: ColorName.orange,
             activeSize: Size(22.0, 10.0),
             activeShape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(
-                Radius.circular(25.0),
-              ),
+              borderRadius: BorderRadius.all(Radius.circular(25.0)),
             ),
           ),
           skip: Text(
