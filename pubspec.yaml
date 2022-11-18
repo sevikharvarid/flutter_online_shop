@@ -43,6 +43,8 @@ dependencies:
     path: features/auth
   onboarding:
     path: features/onboarding
+  home_page:
+    path: features/home_page
 
   # Resources
   resources:

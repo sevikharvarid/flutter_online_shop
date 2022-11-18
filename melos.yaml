@@ -6,3 +6,5 @@ packages:
   - resources/**
   - shared_libraries/**
   - "*"
+
+sdkPath: .fvm/flutter_sdk

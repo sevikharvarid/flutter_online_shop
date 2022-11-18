@@ -28,6 +28,9 @@ class SplashScreen extends StatelessWidget {
               authRouter.navigateToSignIn();
             }
           }
+          if (state.splashState.data! == AppConstants.cachedKey.tokenKey) {
+            authRouter.navigateToHome();
+          }
           if (status.isNoData) {
             onboardingRouter.navigateToOnboarding();
           }

@@ -366,6 +366,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "7.2.0"
+  home_page:
+    dependency: "direct main"
+    description:
+      path: "features/home_page"
+      relative: true
+    source: path
+    version: "1.0.0+1"
   html:
     dependency: transitive
     description:
