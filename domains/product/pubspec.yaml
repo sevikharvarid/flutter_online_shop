@@ -1,4 +1,4 @@
-name: home_page
+name: product
 description: A new Flutter module project.
 version: 1.0.0+1
 publish_to: none
@@ -13,23 +13,15 @@ dependencies:
 
   common:
     path: ../../shared_libraries/common
-  component:
-    path: ../../shared_libraries/component
   dependencies:
     path: ../../shared_libraries/dependencies
-  resources:
-    path: ../../resources/resources
-
-  authentication:
-    path: ../../domains/authentication
-  product:
-    path: ../../domains/product
+  core:
+    path: ../../shared_libraries/core
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
-  bloc_test: ^9.0.3
   mocktail: ^0.3.0
 
 # For information on the generic Dart part of this file, see the
@@ -81,5 +73,5 @@ flutter:
   # identifiers, which may be completely independent or the same as these.
   module:
     androidX: true
-    androidPackage: com.example.home_page
-    iosBundleIdentifier: com.example.homePage
+    androidPackage: com.example.product
+    iosBundleIdentifier: com.example.product

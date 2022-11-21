@@ -604,6 +604,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.2.4"
+  product:
+    dependency: "direct overridden"
+    description:
+      path: "domains/product"
+      relative: true
+    source: path
+    version: "1.0.0+1"
   provider:
     dependency: transitive
     description:

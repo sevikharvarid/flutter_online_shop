@@ -6,7 +6,9 @@ import 'package:dependencies/firebase/firebase.dart';
 import 'package:dependencies/get_it/get_it.dart';
 import 'package:flutter/material.dart';
 import 'package:dependencies/flutter_screenutil/flutter_screenutil.dart';
+import 'package:home_page/presentation/bloc/home_bloc/home_cubit.dart';
 import 'package:home_page/presentation/ui/home_screen.dart';
+import 'package:home_page/presentation/bloc/home_bloc/home_cubit.dart';
 import 'package:onboarding/presentation/bloc/onboarding_bloc/onboarding_cubit.dart';
 import 'package:onboarding/presentation/bloc/splash_bloc/splash_cubit.dart';
 import 'package:onboarding/presentation/ui/on_boarding_screen.dart';
@@ -83,7 +85,12 @@ class MyApp extends StatelessWidget {
                     child: SignUpScreen()),
               );
             case AppRoutes.home:
-              return MaterialPageRoute(builder: (_) => const HomeScreen());
+              return MaterialPageRoute(
+                builder: (_) => BlocProvider<HomeCubit>(
+                  create: (_) => HomeCubit(),
+                  child: HomeScreen(),
+                ),
+              );
             default:
               return MaterialPageRoute(
                 builder: (_) => SplashScreen(),
