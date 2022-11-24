@@ -21,15 +21,28 @@ class SplashScreen extends StatelessWidget {
     return Scaffold(
       body: BlocListener<SplashCubit, SplashState>(
         listener: (context, state) {
+          // final status = state.splashState.status;
+          // if (status.isHasData) {
+          //   if (state.splashState.data! ==
+          //       AppConstants.cachedKey.onBoardingKey) {
+          //     authRouter.navigateToSignIn();
+          //   }
+          // }
+          // if (state.splashState.data! == AppConstants.cachedKey.tokenKey) {
+          //   authRouter.navigateToHome();
+          // }
+          // if (status.isNoData) {
+          //   onboardingRouter.navigateToOnboarding();
+          // }
           final status = state.splashState.status;
           if (status.isHasData) {
             if (state.splashState.data! ==
                 AppConstants.cachedKey.onBoardingKey) {
               authRouter.navigateToSignIn();
             }
-          }
-          if (state.splashState.data! == AppConstants.cachedKey.tokenKey) {
-            authRouter.navigateToHome();
+            if (state.splashState.data! == AppConstants.cachedKey.tokenKey) {
+              authRouter.navigateToHome();
+            }
           }
           if (status.isNoData) {
             onboardingRouter.navigateToOnboarding();

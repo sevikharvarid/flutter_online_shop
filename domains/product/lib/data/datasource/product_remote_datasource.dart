@@ -21,7 +21,7 @@ class ProductRemoteDatasourceImpl extends ProductRemoteDatasource {
   Future<BannerResponseDTO> getBanner() async {
     try {
       final response = await dio
-          .post("${AppConstants.appApi.baseUrl}${AppConstants.appApi.banner}");
+          .get("${AppConstants.appApi.baseUrl}${AppConstants.appApi.banner}");
       return BannerResponseDTO.fromJson(response.data);
     } catch (error) {
       rethrow;

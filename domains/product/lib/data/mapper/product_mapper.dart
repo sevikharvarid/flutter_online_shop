@@ -1,9 +1,9 @@
 import 'package:product/data/model/response/banner_response_dto.dart';
 import 'package:product/data/model/response/product_response_category_dto.dart';
 import 'package:product/data/model/response/product_response_dto.dart';
-import 'package:product/domain/response/banner_data_entity.dart';
-import 'package:product/domain/response/product_category_entity.dart';
-import 'package:product/domain/response/product_entity.dart';
+import 'package:product/domain/entities/response/banner_data_entity.dart';
+import 'package:product/domain/entities/response/product_category_entity.dart';
+import 'package:product/domain/entities/response/product_entity.dart';
 
 class ProductMapper {
   List<ProductCategoryEntity> mapProductCategoryDTOtoEntity(

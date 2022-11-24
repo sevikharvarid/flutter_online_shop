@@ -120,6 +120,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.1.0"
+  core:
+    dependency: "direct overridden"
+    description:
+      path: "../../shared_libraries/core"
+      relative: true
+    source: path
+    version: "0.0.1"
   cross_file:
     dependency: transitive
     description:
@@ -569,6 +576,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.2.4"
+  product:
+    dependency: "direct overridden"
+    description:
+      path: "../../domains/product"
+      relative: true
+    source: path
+    version: "1.0.0+1"
   provider:
     dependency: transitive
     description:

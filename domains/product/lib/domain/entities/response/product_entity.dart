@@ -1,5 +1,5 @@
 import 'package:product/data/model/response/product_response_category_dto.dart';
-import 'package:product/domain/response/product_category_entity.dart';
+import 'package:product/domain/entities/response/product_category_entity.dart';
 
 class ProductResponseDTO {
   bool? status;

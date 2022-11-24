@@ -2,7 +2,7 @@ import 'package:common/utils/state/view_data_state.dart';
 import 'package:dependencies/equatable/equatable.dart';
 
 class HomeState extends Equatable {
-  final ViewData homeState;
+  final ViewData<int> homeState;
 
   const HomeState({required this.homeState});
 
